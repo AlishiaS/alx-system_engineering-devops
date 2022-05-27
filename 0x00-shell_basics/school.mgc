@@ -1,4 +1,2 @@
-#!/bin/bash
-O string SCHOOL School data
-!:mime School
-chmod u+x school.mgc
+ 0 string SCHOOL School data
+ !:mime School
