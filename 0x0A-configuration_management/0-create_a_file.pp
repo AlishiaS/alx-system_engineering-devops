@@ -1,7 +1,7 @@
 # Using Puppet to create a file in /tmp.
 
 file { 'school':
-    ensure  => 'present',
+    ensure  => present,
     content => 'I love puppet',
     owner   => 'wwww-data',
     group   => 'wwww-data,
