@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
-#Bash script that displays all active IPv4 IPs on the machine it’s executed on.
+#Bash script that displays all active IPv4 IPs on the machine it’s executed on
 
-ifconfig | grep -Eo 'inet [(addr:)?(\K\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})]'
+active_interfaces=$(ip link show up | awk -F: '$0 !~ "lo|vir|wl|^[^0-9]"{print $2}')
+
+for interface in $active_interfaces; do
+  ipv4_addresses=$(ip addr show dev "$interface" | awk '$1 == "inet" {print $2}')
+
+  for address in $ipv4_addresses; do
+    echo "Interface: $interface, IPv4: $address"
+  done
+done
