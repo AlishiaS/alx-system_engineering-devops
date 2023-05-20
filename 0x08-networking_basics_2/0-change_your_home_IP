@@ -3,6 +3,8 @@
 # Change facebook.com to 8.8.8.8
 
 cp /etc/hosts ~/hosts.new
-sudo sh -c "echo '127.0.0.2 localhost' >> /etc/hosts"
-sudo sh -c "echo '8.8.8.8 facebook.com' >> /etc/hosts"
+sed -i -c "echo '127.0.0.2 localhost' >> /etc/hosts"
+sed -i -c "echo '8.8.8.8 facebook.com' >> /etc/hosts"
 cp -f ~/hosts.new /etc/hosts
+
+sudo systemctl restart networking
